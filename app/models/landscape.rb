@@ -6,4 +6,5 @@ class Landscape < ApplicationRecord
   has_many :landscape_categories
   has_many :categories, through: :landscape_categories
 
+  has_one_attached :image
 end

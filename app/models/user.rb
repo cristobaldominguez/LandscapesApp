@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :landscapes
   has_many :comments
   has_many :likes
+
+  has_one_attached :profile
+  has_one_attached :cover
 end
