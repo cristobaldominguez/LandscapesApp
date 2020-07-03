@@ -2,7 +2,15 @@
 
 <p>
   <strong>User:</strong>
-  <%= @landscape.user %>
+  <%= @landscape.user.name %>
+</p>
+<p>
+  <strong>Image:</strong>
+  <%= image_tag @landscape.image, alt: @landscape.description %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @landscape.description %>
 </p>
 
 <%= link_to 'Edit', edit_landscape_path(@landscape) %> |

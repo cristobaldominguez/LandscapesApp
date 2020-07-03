@@ -39,6 +39,9 @@ gem 'devise'
 # Adds Faker
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
 
+# Provides higher-level image processing helpers that are commonly needed when handling image uploads.
+gem 'image_processing'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 

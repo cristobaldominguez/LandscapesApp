@@ -1,4 +1,5 @@
 class LandscapesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_landscape, only: [:show, :edit, :update, :destroy]
 
   # GET /landscapes
@@ -24,7 +25,7 @@ class LandscapesController < ApplicationController
   # POST /landscapes
   # POST /landscapes.json
   def create
-    @landscape = Landscape.new(landscape_params)
+    @landscape = Landscape.new(landscape_params.merge(user: current_user))
 
     respond_to do |format|
       if @landscape.save
@@ -69,6 +70,6 @@ class LandscapesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def landscape_params
-      params.require(:landscape).permit(:user_id)
+      params.require(:landscape).permit(:image, :description)
     end
 end

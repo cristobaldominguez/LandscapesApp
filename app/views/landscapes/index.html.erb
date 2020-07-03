@@ -5,6 +5,8 @@
 <table>
   <thead>
     <tr>
+      <th>Image</th>
+      <th>Description</th>
       <th>User</th>
       <th colspan="3"></th>
     </tr>
@@ -13,7 +15,9 @@
   <tbody>
     <% @landscapes.each do |landscape| %>
       <tr>
-        <td><%= landscape.user %></td>
+        <td><%= image_tag landscape.image.variant(resize: '50x50').processed, alt: landscape.description %></td>
+        <td><p><%= landscape.description %></p></td>
+        <td><%= landscape.user.name %></td>
         <td><%= link_to 'Show', landscape %></td>
         <td><%= link_to 'Edit', edit_landscape_path(landscape) %></td>
         <td><%= link_to 'Destroy', landscape, method: :delete, data: { confirm: 'Are you sure?' } %></td>
