@@ -9,7 +9,7 @@ require 'faker'
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
-User.create(email: 'admin@example.com', name: 'Desafío', lastname: 'Latam', nickname: 'dl', password: 123_456)
+User.create(email: 'admin@example.com', name: 'Desafío', lastname: 'Latam', nickname: 'dl', password: 123456)
 
 10.times do
   name = Faker::Name.first_name
