@@ -8,13 +8,13 @@
         overflow-x: hidden;
         z-index: -1;
         text-align: center;
-        background: url(../images/header/day.jpg) no-repeat center / auto 100% transparent;
+        background: url(<%= asset_path 'header/day.jpg' %>) no-repeat center / auto 100% transparent;
     }
 }
 
 @media (prefers-color-scheme: dark) {
 
     .hero__div {
-        background-image: url(../images/header/night.jpg);
+        background-image: url(<%= asset_path 'header/night.jpg' %>);
     }
 }
