@@ -70,6 +70,6 @@ class LandscapesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def landscape_params
-      params.require(:landscape).permit(:image, :description)
+      params.require(:landscape).permit(:image, :title, :description)
     end
 end

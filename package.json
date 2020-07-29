@@ -1,5 +1,8 @@
 {
   "name": "LandscapeApp",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "dropzone": "^5.7.2",
+    "jquery": "^3.5.1"
+  }
 }

@@ -1,5 +1,30 @@
-<h1>New Landscape</h1>
+<%#= render 'form', landscape: @landscape %>
+<form action="#" class="card_form">
+  <div class="card_form__card">
+    <div class="card_form__picture">
+      <div class="card_form__picture-span" id="dropzone">
+        <div class="fallback">
+          <input id="#foo" name="landscape[image]" type="file" />
+        </div>
+      </div>
+    </div>
 
-<%= render 'form', landscape: @landscape %>
+    <div class="card_form__inputs">
+      <input type="hidden" value="asd" name="myname">
+      <input
+        type="text"
+        name="landscape[title]"
+        class="card_form__input-title"
+        placeholder="Escribe aquí el título"
+      />
+      <textarea
+        name="landscape[description]"
+        class="card_form__input-description"
+        placeholder="Escribe aquí la descripción"
+      ></textarea>
+    </div>
+  </div>
+  <input id="btn-form-landscape-new-submit" type="button" value="Crear Landscape" class="card_form__submit" />
+</form>
 
 <%= link_to 'Back', landscapes_path %>
