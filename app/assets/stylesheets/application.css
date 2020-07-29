@@ -12,6 +12,7 @@
  *
  * require_tree .
  *= require dropzone/dist/dropzone
+ *= require bulma/bulma
  *= require scss/style
  *= require_self
  */
