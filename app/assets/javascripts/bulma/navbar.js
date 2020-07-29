@@ -44,6 +44,8 @@ document.addEventListener('turbolinks:load', function () {
         var $target = document.getElementById(target);
         $el.classList.toggle('is-active');
         $target.classList.toggle('is-active');
+        var $header = document.querySelector('.header__container');
+        $header.classList.toggle('header__container--small');
       });
     });
   }

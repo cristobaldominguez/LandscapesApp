@@ -1,0 +1,20 @@
+.navbar {
+
+	&-menu {
+		
+	}
+
+	&-item {
+		text-decoration: none;
+	}
+
+	&-brand {
+
+		&__title {
+	        color: var(--highlight-color);
+	        margin: 0;
+	        text-align: center;
+	        text-transform: uppercase;
+	    }
+	}
+}

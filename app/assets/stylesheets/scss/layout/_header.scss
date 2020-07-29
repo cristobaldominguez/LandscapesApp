@@ -9,14 +9,13 @@
         max-width: 512px;
         margin: 0 auto 50px;
         max-width: 512px;
+        min-height: 200px;
         padding: 2em 1em 0;
-    }
 
-    &__title {
-        color: var(--highlight-color);
-        text-align: center;
-        text-transform: uppercase;
-        margin-top: 0;
+        &--small {
+            min-height: 10px;
+            padding: 0 1em;
+        }
     }
 
     &__description {
