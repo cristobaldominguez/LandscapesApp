@@ -10,6 +10,7 @@ document.addEventListener("turbolinks:load", function () {
       acceptedFiles: 'image/*',
       autoProcessQueue: false,
       paramName: 'landscape[image]',
+      previewTemplate: document.querySelector('#tpl').innerHTML,
       headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
       },
