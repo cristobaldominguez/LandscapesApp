@@ -9,16 +9,17 @@ document.addEventListener("turbolinks:load", function () {
     paramName: 'landscape[image]',
     headers: {
       'X-CSRF-TOKEN': authenticityToken
-    },
+    }
   });
 
+  dropzoneNewLandscape.on("sending", function (file, xhr, formData) {
+    const title = $('#landscape-title').val();
+    const description = $('#landscape-description').val();
+    formData.append('landscape[title]', title);
+    formData.append('landscape[description]', description);
+  });
 
   $('#btn-form-landscape-new-submit').click(() => {
-    Dropzone.options.dropzoneNewLandscape = {
-      init: function () {
-        this.on("addedfile", function (file) { alert("Added file."); });
-      }
-    }
     dropzoneNewLandscape.processQueue();
   });
 });
