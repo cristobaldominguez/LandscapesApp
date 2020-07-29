@@ -1,0 +1,71 @@
+:root {
+    --border-radius: 5px;
+    --card-form-height: 512px;
+    --body-height: 100vh;
+    --follow-border-radius: 5px;
+    --main-bg:  #f9f9f9;
+    --border-color: #999;
+    
+    --highlight-color: #000;
+    --search-placeholder-color: #000;
+    --search-boder-bottom: #ccc;
+    --header-description: #000;
+
+    --card-shadow: #c3c3c3;
+    --card-border-shadow: 3px;
+    --card-bg: #fff;
+    --card-color: #000;
+    --card-author-name: #000;
+    --social-text: #888;
+    --social-number: #000;
+    --social-borders: #eee;
+
+    --comment-text: #000;
+    --comment-text-info: #333;
+
+    --search-bg: rgba(255,255,255,.95);
+    --search-text: #666;
+
+    --dropzone-bg: #ccc;
+
+    --color-red:    #FF583A;
+    --color-orange: #FF9032;
+    --color-yellow: #FEDD0F;
+    --color-green:  #4B963E;
+    --color-blue:   #23439F;
+    --color-purple: #561475;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --main-bg: rgba(34, 34, 34, 1);
+      --border-color: #333;
+      --highlight-color: tomato;
+      --search-placeholder-color: tomato;
+      --search-boder-bottom: #333;
+      --header-description: tomato;
+
+      --card-shadow: #000;
+      --card-bg: #151515;
+      --card-color: #bbb;
+      --card-author-name: #fff;
+      --social-text: #aaa;
+      --social-number: #ccc;
+      --social-borders: #333;
+
+      --comment-text: #fff;
+      --comment-text-info: #ccc;
+
+      --search-bg: rgba(34, 34, 34, 1);
+      --search-text: #fff;
+
+      --dropzone-bg: #666;
+      
+      --color-red:    #FF0900;
+      --color-orange: #FF7F00;
+      --color-yellow: #FFEF00;
+      --color-green:  #00F11D;
+      --color-blue:   #0079FF;
+      --color-purple: #A800FF;
+    }
+  }

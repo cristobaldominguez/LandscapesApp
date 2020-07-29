@@ -1,0 +1,83 @@
+.comment {
+
+    &__list {
+        margin: 0;
+        padding: 0 0 .5em;
+    }
+
+    &__item {
+        display: flex;
+        margin-bottom: 2em;
+
+        &-profile {
+            flex: 0 50px;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+
+        &-content {
+            color: var(--comment-text);
+            font-weight: 100;
+            margin-left: 1em;
+        }
+    }
+
+    &__profile {
+        @extend .card__profile;
+        box-shadow: none;
+    }
+
+    &__text {
+        margin: 0;
+    }
+
+    &__username {
+        font-weight: 900;
+    }
+
+    &__info {
+        color: var(--comment-text-info);
+        font-size: .85em;
+        margin: 0;
+        text-align: right;
+        display: flex;
+        justify-content: flex-end;
+
+        & > {
+            flex-basis: 200px;
+        }
+    }
+
+    &__time,
+    &__like,
+    &__reply {
+        flex-grow: 1;
+        margin: .25em;
+    }
+
+    &__like {
+        color: currentColor;
+        flex-grow: 0;
+        flex-basis: 35px;
+        text-align: center;
+
+        &-liked {
+            color: var(--color-red);            
+        }
+
+        &:hover {
+            @extend .comment__like-liked;
+        }
+    }
+
+    &__reply {
+        color: currentColor;
+        text-decoration: none;
+        flex-grow: 0;
+        flex-basis: 35px;
+
+        &:hover {
+            font-weight: bold;
+        }
+    }
+}

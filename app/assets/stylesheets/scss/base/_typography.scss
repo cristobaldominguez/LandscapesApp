@@ -1,0 +1,66 @@
+@font-face {
+    font-family: 'KelsonSans';
+    src:url('../fonts/Kelson_Sans_Light.woff2') format('woff2'),
+        url('../fonts/Kelson_Sans_Light.woff') format('woff'),
+        url('../fonts/Kelson_Sans_Light.otf') format('opentype');
+    font-style: normal;
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: 'KelsonSans';
+    src:url('../fonts/Kelson_Sans_Regular.woff2') format('woff2'),
+        url('../fonts/Kelson_Sans_Regular.woff') format('woff'),
+        url('../fonts/Kelson_Sans_Regular.otf') format('opentype');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:url('../fonts/OpenSans-Light.woff2') format('woff2'),
+        url('../fonts/OpenSans-Light.woff') format('woff');
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:url('../fonts/OpenSans-LightItalic.woff2') format('woff2'),
+        url('../fonts/OpenSans-LightItalic.woff') format('woff');
+    font-style: italic;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:url('../fonts/OpenSans-Regular.woff2') format('woff2'),
+        url('../fonts/OpenSans-Regular.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:url('../fonts/OpenSans-Italic.woff2') format('woff2'),
+        url('../fonts/OpenSans-Italic.woff') format('woff');
+    font-style: italic;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src:url('../fonts/OpenSans-SemiBold.woff2') format('woff2'),
+        url('../fonts/OpenSans-SemiBold.woff') format('woff');
+    font-style: normal;
+    font-weight: 600;
+}
+
+
+@font-face {
+    font-family: 'Open Sans';
+    src:url('../fonts/OpenSans-SemiBoldItalic.woff2') format('woff2'),
+        url('../fonts/OpenSans-SemiBoldItalic.woff') format('woff');
+    font-style: italic;
+    font-weight: 600;
+}

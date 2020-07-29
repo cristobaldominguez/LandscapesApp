@@ -1,0 +1,79 @@
+.card_form {
+    @extend .cards;
+
+    &__card {
+        @extend .card;
+        overflow: hidden;
+        margin-bottom: 2em;
+    }
+
+    &__picture {
+        height: var(--card-form-height);
+        background-color: var(--dropzone-bg);
+        position: relative;
+
+        &-span {
+            width: 80%;
+            height: 80%;
+            box-sizing: border-box;
+            margin: 10%;
+            border: 4px dashed white;
+            position: absolute;
+            top: 0;
+            border-radius: 15px;
+
+            .fallback {
+                display: flex;
+                height: 100%;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+
+    &__inputs {
+        display: flex;
+        flex-direction: column;
+        padding: 1em;
+    }
+
+    &__submit {
+        width: 100%;
+        border-radius: var(--border-radius);
+        border: 1px solid var(--color-blue);
+        background: transparent;
+        color: var(--color-blue);
+        padding: 2em 0;
+        font-weight: bold;
+
+        &:hover {
+            border: 1px solid var(--color-blue);
+            background: var(--color-blue);
+            color: white;
+        }
+    }
+
+    &__label {
+        color: var(--card-color);
+        font-size: .9em;
+
+        &-title { @extend .card_form__label; }
+        &-description {
+            @extend .card_form__label;
+            margin-top: 1em;
+        }
+    }
+
+    &__input {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid white;
+        border-radius: 0;
+        font-size: .9rem;
+        padding: .5em;
+
+        &-title { @extend .card_form__input; }
+        &-description { @extend .card_form__input; }
+    }
+}

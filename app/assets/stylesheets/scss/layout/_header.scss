@@ -1,0 +1,26 @@
+.header {
+
+    &__main {
+        position: relative;
+    }
+
+    &__container {
+        padding-top: 2em;
+        max-width: 512px;
+        margin: 0 auto 50px;
+        max-width: 512px;
+        padding: 2em 1em 0;
+    }
+
+    &__title {
+        color: var(--highlight-color);
+        text-align: center;
+        text-transform: uppercase;
+        margin-top: 0;
+    }
+
+    &__description {
+        font-size: 0.9rem;
+        color: var(--header-description);
+    }
+}

@@ -1,0 +1,43 @@
+.add_comment {
+    display: flex;
+    padding-bottom: 2em;
+
+    &__profile {
+        @extend .comment__profile;
+        
+        &-container {
+            @extend .comment__item-profile;
+            flex: 0 50px;
+            flex-grow: 0;
+            flex-shrink: 0;
+        }
+    }
+
+    &__content {
+        display: flex;
+        flex-grow: 1;
+        margin-left: 1em;
+    }
+
+    &__text {
+        background: transparent;
+        border: 1px solid var(--social-borders);
+        border-radius: var(--follow-border-radius);
+        color: var(--comment-text);
+        flex-grow: 1;
+        -webkit-appearance: none;
+    }
+
+    &__submit {
+        background: transparent;
+        border: 1px solid var(--color-blue);
+        border-radius: var(--follow-border-radius);
+        color: var(--color-blue);
+        flex-grow: 0;
+        
+        &:hover {
+            color: var(--card-bg);
+            background: var(--color-blue);
+        }
+    }
+}

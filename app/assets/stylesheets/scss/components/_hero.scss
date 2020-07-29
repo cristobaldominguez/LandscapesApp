@@ -1,0 +1,20 @@
+.hero {
+    
+    &__div {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 405px;
+        overflow-x: hidden;
+        z-index: -1;
+        text-align: center;
+        background: url(../images/header/day.jpg) no-repeat center / auto 100% transparent;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+
+    .hero__div {
+        background-image: url(../images/header/night.jpg);
+    }
+}

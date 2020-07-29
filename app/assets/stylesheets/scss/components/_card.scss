@@ -1,0 +1,222 @@
+.card {
+    border-radius: 5px;
+    box-shadow: 0px 3px 0px 0px tomato inset, 0 var(--card-border-shadow) 0 var(--card-shadow), 0 14px 10px rgba(0,0,0,0.25);
+    list-style: none;
+    margin-bottom: 100px;
+    width: inherit;
+
+    &s {
+        margin: 50px auto;
+        padding: 0;
+        max-width: 512px;
+        width: 100%;
+    }
+
+    &__highlight {
+        border-radius: 5px 5px 0 0;
+        cursor: pointer;
+        height: 370px;
+        overflow: hidden;
+        position: relative;
+        transition: all .5s ease-in-out;
+
+        .card--open & {
+            height: 512px;
+        }
+    }
+
+    &__content {
+        background-color: var(--card-bg);
+        border-radius: 0 0 5px 5px;
+        min-height: 76px;
+        position: relative;
+        transition: min-height .5s;
+
+        .card--open & {
+            min-height: 100px;
+        }
+    }
+
+    &__profile {
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,.5);
+        transition: all .25s ease-in;
+        width: 100%;
+
+        &-container {
+            display: block;
+            left: 20px;
+            opacity: 0;
+            position: absolute;
+            top: -125px;
+            transition: all .25s ease-in-out;
+            width: 120px;
+
+            .card--open & {
+                opacity: 1;
+                top: -85px;
+            }
+        }
+    }
+
+    &__img {
+        width: 100%;
+    }
+
+    &__title {
+        color: var(--card-color);
+        font-size: 1.1rem;
+        padding: 0 2%;
+        position: absolute;
+        right: 0;
+        text-align: right;
+        transition: all .25s ease-in;
+        top: 0;
+        width: 350px;
+
+        .card--open & {
+            clear: both;
+            color: white;
+            text-shadow: 0 0 10px rgba(0,0,0,.75);
+            top: -60px;
+        }
+    }
+
+    &__author {
+        opacity: 0;
+        padding: 0 2%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        transition: all .25s;
+        width: 350px;
+
+        &-name {
+            color: var(--card-author-name);
+            font-weight: 200;
+            text-align: right;
+        }
+
+        &-follow {
+            bottom: 2px;
+            border: 1px solid currentColor;
+            background-color: transparent;
+            color: var(--color-blue);
+            border-radius: var(--follow-border-radius);
+            display: inline-block;
+            font-family: 'Open Sans';
+            font-weight: bold;
+            font-size: .75em;
+            margin: 0 1em;
+            padding: 0 .45em .1em;
+            position: relative;
+            text-transform: lowercase;
+            text-decoration: none;
+
+            &:hover {
+                border-color: var(--color-blue);
+                background-color: var(--color-blue);
+                color: white;
+            }
+        }
+
+        &-following {
+            @extend .card__author-follow;
+            color: var(--social-text);
+        }
+
+        .card--open & {
+            opacity: 1;
+        }
+    }
+
+    &__like {
+        color: #ccc;
+        display: block;
+        padding: 28px 0 0 20px;
+        text-align: center;
+        transition: all .35s ease-out;
+        width: 120px;
+
+        &--red {
+          color: tomato;
+        }
+
+        .card--open & {
+            padding-top: 55px;
+        }
+    }
+
+    &__hidden {
+        height: 0;
+        overflow: hidden;
+        transition: all .5s ease-in-out;
+
+        .card--open & {
+          height: var(--current-height);
+        }
+    }
+
+    &__data {
+        margin: 20px 5%;
+    }
+
+    &__follow-btn {
+        background-color: #ccc;
+        border: none;
+        border-radius: 5px;
+        color: #333;
+        font-family: 'Open Sans';
+        font-size: 1.25em;
+        font-weight: 300;
+        margin: 20px 10%;
+        padding: 15px 0;
+        width: 80%;
+        
+        &:hover {
+            background-color: tomato;
+            color: white;
+        }
+
+        &--following {
+            background-color: tomato;
+            color: white;
+
+            &:hover {
+                background-color: red;
+            }
+        }
+    }
+}
+
+@media (max-width: 400px) {
+
+    .card {
+
+        &s {
+            max-width: 350px;
+        }
+    
+        &__like {
+            padding: 1.65em 0 0;
+            width: 165px;
+        }
+
+        &__title-text {
+            font-size: .9em;
+            padding: .93em 0;
+        }
+
+        &__author-name {
+            font-size: .9em;
+        }
+
+        &__highlight {
+            height: 325px;
+
+            .card--open & {
+                height: 350px;
+            }
+        }
+    }  
+}
