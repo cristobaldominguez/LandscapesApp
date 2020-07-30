@@ -1,0 +1,51 @@
+.profile {
+	margin-top: 265px;
+
+	&__container {
+		text-align: center;
+	}
+
+	&__image {
+		border-radius: 5px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+		height: 200px;
+		width: 200px;
+	}
+
+	&__name,
+	&__member-since {
+		text-align: center;
+		color: var(--card-author-name);
+	}
+
+	&__name {
+		margin-bottom: 0;
+	}
+
+	&__member-since {
+		font-weight: 200;
+		margin-top: 0;
+	}
+
+	&__follow {
+		text-align: center;
+		margin: 50px 0;
+
+		&-link {
+			display: inline-block;
+			padding: .75em 4.75em;
+			background: var(--color-blue);
+			color: white;
+			text-decoration: none;
+			text-transform: lowercase;
+			border-radius: 2em;
+			border: 2px solid var(--color-blue);
+
+			&:hover {
+				background: transparent;
+				border-color: var(--color-blue-light);
+				color: var(--color-blue-light);
+			}
+		}
+	}
+}

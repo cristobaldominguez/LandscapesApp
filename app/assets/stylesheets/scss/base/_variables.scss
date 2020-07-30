@@ -34,6 +34,8 @@
     --color-green:  #4B963E;
     --color-blue:   #23439F;
     --color-purple: #561475;
+
+    --color-blue-light: #182c6b;
   }
   
   @media (prefers-color-scheme: dark) {
@@ -67,5 +69,7 @@
       --color-green:  #00F11D;
       --color-blue:   #0079FF;
       --color-purple: #A800FF;
+
+      --color-blue-light: #1a85ff;
     }
   }

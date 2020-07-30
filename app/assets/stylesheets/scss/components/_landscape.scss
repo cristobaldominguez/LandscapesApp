@@ -1,0 +1,21 @@
+.landscape {
+
+	&s {
+		padding: 0;
+		margin: 0;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 5px;
+	}
+
+	&__item {
+		display: block;
+	}
+
+	&__link {}
+	
+	&__image {
+		display: block;
+		width: 100%;
+	}
+}
