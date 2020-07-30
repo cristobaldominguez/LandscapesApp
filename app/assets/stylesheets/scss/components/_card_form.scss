@@ -72,6 +72,8 @@
         border-radius: 0;
         font-size: .9rem;
         padding: .5em;
+        width: 100%;
+        box-sizing: border-box;
 
         &-title { @extend .card_form__input; }
         &-description { @extend .card_form__input; }

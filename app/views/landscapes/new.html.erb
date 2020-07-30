@@ -10,20 +10,25 @@
     </div>
 
     <div class="card_form__inputs">
-      <input type="hidden" value="asd" name="myname">
-      <input
-        id="landscape-title"
-        type="text"
-        name="landscape[title]"
-        class="card_form__input-title"
-        placeholder="Escribe aquí el título"
-      />
-      <textarea
-        id="landscape-description"
-        name="landscape[description]"
-        class="card_form__input-description"
-        placeholder="Escribe aquí la descripción"
-      ></textarea>
+      <label for="landscape[title]" class="label">Título</label>
+      <div class="control">
+        <input
+          id="landscape-title"
+          type="text"
+          name="landscape[title]"
+          class="card_form__input-title"
+          placeholder="Escribe aquí el título"
+        />
+      </div>
+      <label for="landscape[description]" class="label">Descripción</label>
+      <div class="control">
+        <textarea
+          id="landscape-description"
+          name="landscape[description]"
+          class="card_form__input-description"
+          placeholder="Escribe aquí la descripción"
+        ></textarea>
+      </div>
     </div>
   </div>
   <input id="btn-form-landscape-new-submit" type="button" value="Crear Landscape" class="card_form__submit" />
