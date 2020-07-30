@@ -3,4 +3,5 @@ class PagesController < ApplicationController
   end
 
   def profile; end
+  def user_form; end
 end

@@ -2,14 +2,32 @@
 	margin-top: 265px;
 
 	&__container {
-		text-align: center;
-	}
-
-	&__image {
+		background: var(--color-gray);
 		border-radius: 5px;
 		box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 		height: 200px;
+		text-align: center;
+		margin: 0 auto;
+		overflow: hidden;
+		position: relative;
 		width: 200px;
+
+		&:before {
+			border: 3px dashed white;
+			border-radius: 5px;
+			content: '';
+			height: 160px;
+			position: absolute;
+			right: 18px;
+			top: 18px;
+			width: 160px;
+		}
+	}
+
+	&__image {
+		display: block;
+		height: inherit;
+		width: inherit;
 	}
 
 	&__name,

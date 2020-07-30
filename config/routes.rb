@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   }
 
   get 'pages/profile'
+  get 'pages/user_form'
   root 'pages#index'
 end
