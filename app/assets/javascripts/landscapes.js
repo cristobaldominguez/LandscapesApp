@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("turbolinks:load", function () {
   const dropzone_enabled = document.querySelector('#dropzone')
 
   if (dropzone_enabled) {
