@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  resources :users, only: [] do
+  resources :users, only: [:show] do
     collection do 
       get 'profile'
     end

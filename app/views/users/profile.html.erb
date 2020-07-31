@@ -1,7 +1,7 @@
-<%= render 'layouts/shared/header', image: '' do %>
+<%= render 'layouts/shared/header', image: current_user.cover.attached? ? url_for(current_user.cover) : '' do %>
 	<div class="profile">
 		<div class="profile__container">
-			<%= image_tag current_user.profile, class: 'profile__image' %>
+			<%= image_tag current_user.profile.attached? ? current_user.profile : 'profiles/avatar.png', class: 'profile__image' %>
 		</div>
 
 		<h3 class="profile__name"><%= current_user.full_name %></h3>
@@ -10,10 +10,6 @@
 <% end %>
 
 <div class="container">
-	<div class="profile__follow">
-		<a href="#" class="profile__follow-link">Seguir</a>
-	</div>
-
 	<ul class="social">
 		<li class="social__element">
 			<div class="social__number">8526</div>

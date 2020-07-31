@@ -1,4 +1,4 @@
-<%= render 'layouts/shared/header' do %>
+<%= render 'layouts/shared/header', image: current_user ? url_for(current_user.cover) : '' do %>
 <% end %>
 
 <div class="container">
