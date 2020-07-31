@@ -1,13 +1,5 @@
 require 'faker'
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 puts 'Destroying records and data'
 Category.destroy_all
 User.destroy_all
@@ -18,24 +10,71 @@ categories.each do |category|
   Category.create!(name: category)
 end
 
-puts 'Creating Main User'
-main_user = User.create!(
-  email: 'admin@example.com', 
-  name: 'Desafío', 
-  lastname: 'Latam', 
-  nickname: 'dl', 
-  password: 123456, 
-)
-main_user.profile.attach(io: File.open('app/assets/images/profiles/elliot.jpeg'), filename: 'elliot.jpeg')
-main_user.cover.attach(io: File.open('app/assets/images/covers/mr_robot_cover.jpeg'), filename: 'mr_robot_cover.jpeg')
+users = [
+  { email: 'cristobal@example.com', name: 'Cristobal', lastname: 'Dominguez', nickname: 'cristobaldominguez', password: 123123, profile: 'cd.jpg', cover: 'cover_04.jpg', landscapes: 5 },
+  { email: 'admin@example.com', name: 'Desafío', lastname: 'Latam', nickname: 'elliot', password: 123456, profile: 'elliot.jpg', cover: 'mr_robot_cover.jpeg', landscapes: 3 },
+  { email: 'margot@example.com', name: 'Margot', lastname: 'Robbie', nickname: 'margotrobbie', password: 123456, profile: 'margot.jpg', cover: 'cover_01.jpg', landscapes: 3 },
+  { email: 'ryan@example.com', name: 'Ryan', lastname: 'Reynolds', nickname: 'ryanreynolds', password: 123456, profile: 'ryan.jpg', cover: 'cover_05.jpg', landscapes: 3 },
+  { email: 'barack@example.com', name: 'Barack', lastname: 'Obama', nickname: 'barackobama', password: 123456, profile: 'barack.jpg', cover: 'cover_03.jpg', landscapes: 3 },
+  { email: 'michael@example.com', name: 'Michael', lastname: 'Jackson', nickname: 'michaeljackson', password: 123456, profile: 'michael.jpg', cover: 'cover_06.jpg', landscapes: 3 },
+  { email: 'bruce@example.com', name: 'Bruce', lastname: 'Willis', nickname: 'brucewillis', password: 123456, profile: 'bruce.jpg', cover: 'cover_02.jpg', landscapes: 3 }
+]
 
-puts 'Creating Faker Users'
-10.times do
-  name = Faker::Name.first_name
-  lastname = Faker::Name.last_name
-  nickname = "#{name.downcase}_#{lastname.downcase}"
+images = (1..23).to_a.shuffle
+days = (1..24).to_a.shuffle
+titles = ['Muy lejos, más allá', 'De las montañas', 'Alejados de los países', 'De vocales y consonantes', 'Viven los textos simulados', 'Aislados en casas de letras', 'En la costa de la semántica', 'Un gran océano de lenguas', 'Un riachuelo llamado Pons', 'Fluye por su pueblo', 'Los abastece con normas', 'Hablamos de un país', 'Paraisomático en el que', 'A uno le caen pedazos', 'De frases asadas', 'Ni siquiera los poderosos', 'Signos de puntuación', 'A los textos simulados', 'Una vida, se puede decir', 'Poco ortográfica', 'Pero un buen día', 'Una pequeña línea de texto', 'Llamada Lorem Ipsum', 'Decidió aventurarse y salir']
 
-  User.create!(email: Faker::Internet.unique.email, name: name, lastname: lastname, nickname: nickname, password: 123_456)
+puts 'Creating Users'
+users.each do |user|
+
+  puts "Creating User #{user[:name]}"
+  current_user = User.create!(
+    email: user[:email],
+    name: user[:name],
+    lastname: user[:lastname],
+    nickname: user[:nickname],
+    password: user[:password]
+  )
+  current_user.profile.attach(io: File.open("app/assets/images/profiles/#{user[:profile]}"), filename: user[:profile])
+  current_user.cover.attach(io: File.open("app/assets/images/covers/#{user[:cover]}"), filename: user[:cover])
+
+  user[:landscapes].times do |index|
+    id = images.pop
+    date = Date.today - days[id].days
+
+    current_landscape = Landscape.create!(
+      title: titles[id],
+      description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
+      user_id: current_user.id,
+      created_at: Date.today - days[id].days,
+      updated_at: Date.today - days[id].days
+    )
+
+    current_id = id < 10 ? "0#{id}" : id.to_s
+    current_landscape.image.attach(io: File.open("app/assets/images/squared/#{current_id}.jpg"), filename: "#{current_id}.jpg")
+  end
+
+end
+
+user_ids = User.pluck(:id)
+landscape_ids = Landscape.pluck(:id)
+rand_comments = landscape_ids.map { |_| rand(1..5) }
+
+puts 'Creating Comments'
+landscape_ids.each do |landscape|
+  puts "Creating Comments for Landscape #{landscape}"
+
+  rand_comment = rand_comments.pop
+
+  rand_comment.times do |_|
+    current_comment = Comment.create!(
+       user_id: user_ids.sample,
+       landscape_id: landscape,
+       text: Faker::Lorem.paragraph(sentence_count: 3, supplemental: false, random_sentences_to_add: 5),
+       created_at: Date.today - rand(1..10000).hours
+    )
+  end
+
 end
 
 puts 'DONE!'
