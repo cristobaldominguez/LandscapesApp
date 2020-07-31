@@ -19,7 +19,15 @@ categories.each do |category|
 end
 
 puts 'Creating Main User'
-User.create!(email: 'admin@example.com', name: 'Desafío', lastname: 'Latam', nickname: 'dl', password: 123456)
+main_user = User.create!(
+  email: 'admin@example.com', 
+  name: 'Desafío', 
+  lastname: 'Latam', 
+  nickname: 'dl', 
+  password: 123456, 
+)
+main_user.profile.attach(io: File.open('app/assets/images/profiles/elliot.jpeg'), filename: 'elliot.jpeg')
+main_user.cover.attach(io: File.open('app/assets/images/covers/mr_robot_cover.jpeg'), filename: 'mr_robot_cover.jpeg')
 
 puts 'Creating Faker Users'
 10.times do

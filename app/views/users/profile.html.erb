@@ -1,11 +1,11 @@
 <%= render 'layouts/shared/header', image: '' do %>
 	<div class="profile">
 		<div class="profile__container">
-			<%= image_tag 'profiles/she.jpg', class: 'profile__image' %>
+			<%= image_tag current_user.profile, class: 'profile__image' %>
 		</div>
 
-		<h3 class="profile__name">Margot Robbie</h3>
-		<h4 class="profile__member-since">Miembro desde: 30 de Julio, 2020</h4>
+		<h3 class="profile__name"><%= current_user.full_name %></h3>
+		<h4 class="profile__member-since">Miembro desde <%= current_user.created_at.year %></h4>
 	</div>
 <% end %>
 
@@ -30,65 +30,16 @@
 	</ul>
 
 	<ul class="landscapes">
-		<li class="landscape__item">
-			<a href="#" class="landscape__link">
-				<%= image_tag 'squared/01.jpg', class: 'landscape__image' %>
-			</a>
-		</li>
-		<li class="landscape__item">
-			<a href="#" class="landscape__link">
-				<%= image_tag 'squared/02.jpg', class: 'landscape__image' %>
-			</a>
-		</li>
-		<li class="landscape__item">
-			<a href="#" class="landscape__link">
-				<%= image_tag 'squared/03.jpg', class: 'landscape__image' %>
-			</a>
-		</li>
-		<li class="landscape__item">
-			<a href="#" class="landscape__link">
-				<%= image_tag 'squared/04.jpg', class: 'landscape__image' %>
-			</a>
-		</li>
-		<li class="landscape__item">
-			<a href="#" class="landscape__link">
-				<%= image_tag 'squared/05.jpg', class: 'landscape__image' %>
-			</a>
-		</li>
-		<li class="landscape__item">
-			<a href="#" class="landscape__link">
-				<%= image_tag 'squared/06.jpg', class: 'landscape__image' %>
-			</a>
-		</li>
-		<li class="landscape__item">
-			<a href="#" class="landscape__link">
-				<%= image_tag 'squared/07.jpg', class: 'landscape__image' %>
-			</a>
-		</li>
-		<li class="landscape__item">
-			<a href="#" class="landscape__link">
-				<%= image_tag 'squared/08.jpg', class: 'landscape__image' %>
-			</a>
-		</li>
-		<li class="landscape__item">
-			<a href="#" class="landscape__link">
-				<%= image_tag 'squared/09.jpg', class: 'landscape__image' %>
-			</a>
-		</li>
-		<li class="landscape__item">
-			<a href="#" class="landscape__link">
-				<%= image_tag 'squared/10.jpg', class: 'landscape__image' %>
-			</a>
-		</li>
-		<li class="landscape__item">
-			<a href="#" class="landscape__link">
-				<%= image_tag 'squared/11.jpg', class: 'landscape__image' %>
-			</a>
-		</li>
-		<li class="landscape__item">
-			<a href="#" class="landscape__link">
-				<%= image_tag 'squared/12.jpg', class: 'landscape__image' %>
-			</a>
-		</li>
+		<% if @landscapes.any? %>
+			<% @landscapes.each do |landscape| %>
+				<li class="landscape__item">
+					<a href="#" class="landscape__link">
+						<%= image_tag landscape.image.variant(combine_options: { gravity: 'Center', crop: '400x400+0+0' }), class: 'landscape__image', data: { lightbox: 'landscapes'} %>
+					</a>
+				</li>
+			<% end %>
+		<% else %>
+			<p>Aún no tienes Landscapes, sube uno <%= link_to 'ahora ya!', new_landscape_path %></p>
+		<% end %>
 	</ul>
 </div>

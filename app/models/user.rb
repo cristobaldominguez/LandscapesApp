@@ -10,4 +10,13 @@ class User < ApplicationRecord
 
   has_one_attached :profile
   has_one_attached :cover
+
+  # Scopes
+
+  # Class Methods
+
+  # Instance Methods
+  def full_name
+    "#{name} #{lastname}"
+  end
 end
