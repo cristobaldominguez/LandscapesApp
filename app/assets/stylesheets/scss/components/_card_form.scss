@@ -21,6 +21,7 @@
             position: absolute;
             top: 0;
             border-radius: 15px;
+            color: white;
 
             .fallback {
                 display: flex;
@@ -46,6 +47,7 @@
         color: var(--color-blue);
         padding: 2em 0;
         font-weight: bold;
+        cursor: pointer;
 
         &:hover {
             border: 1px solid var(--color-blue);

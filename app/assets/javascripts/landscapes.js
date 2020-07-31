@@ -1,4 +1,4 @@
-document.addEventListener("turbolinks:load", function () {
+document.addEventListener("DOMContentLoaded", function () {
   const dropzone_enabled = document.querySelector('#dropzone')
 
   if (dropzone_enabled) {
@@ -25,9 +25,19 @@ document.addEventListener("turbolinks:load", function () {
       formData.append('landscape[description]', description);
     });
 
+    // After the landscape is created, then we redirect to my profile view
+    dropzoneNewLandscape.on("success", function () {
+      alert('Landscape creado correctamente!!');
+      window.location = "/users/profile";
+    });
+
+    // After the landscape is created, then we redirect to my profile view
+    dropzoneNewLandscape.on("canceled", function () {
+      alert('Oops! Ocurrió un error, intente nuevamente');
+    });
+
     $('#btn-form-landscape-new-submit').click(() => {
       dropzoneNewLandscape.processQueue();
     });
   }
-
 });
