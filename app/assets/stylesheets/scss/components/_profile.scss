@@ -12,16 +12,21 @@
 		position: relative;
 		width: 200px;
 
-		&:before {
-			border: 3px dashed white;
-			border-radius: 5px;
-			content: '';
-			height: 160px;
-			position: absolute;
-			right: 18px;
-			top: 18px;
-			width: 160px;
+		&--empty {
+			@extend .profile__container;
+
+			&:before {
+				border: 3px dashed white;
+				border-radius: 5px;
+				content: '';
+				height: 160px;
+				position: absolute;
+				right: 18px;
+				top: 18px;
+				width: 160px;
+			}
 		}
+
 	}
 
 	&__image {

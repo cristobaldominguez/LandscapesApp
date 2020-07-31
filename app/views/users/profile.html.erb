@@ -25,8 +25,8 @@
 		</li>
 	</ul>
 
+	<% if @landscapes.any? %>
 	<ul class="landscapes">
-		<% if @landscapes.any? %>
 			<% @landscapes.each do |landscape| %>
 				<li class="landscape__item">
 					<a href="#" class="landscape__link">
@@ -34,8 +34,11 @@
 					</a>
 				</li>
 			<% end %>
-		<% else %>
-			<p>Aún no tienes Landscapes, sube uno <%= link_to 'ahora ya!', new_landscape_path %></p>
-		<% end %>
+	<% else %>
+	<ul class="landscapes--empty">
+			<li class="landscape__item">
+				<p class="landscape__no-landscapes">Aún no tienes Landscapes, sube uno <a class="landscape__no-landscapes--link" href="/landscapes/new">ahora ya!</a></p>
+			</li>
 	</ul>
+	<% end %>
 </div>

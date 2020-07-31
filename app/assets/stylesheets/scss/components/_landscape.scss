@@ -6,6 +6,11 @@
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		gap: 5px;
+
+		&--empty {
+			grid-template-columns: repeat(1, 1fr);
+			gap: 0;
+		}
 	}
 
 	&__item {
@@ -17,5 +22,18 @@
 	&__image {
 		display: block;
 		width: 100%;
+	}
+
+	&__no-landscapes {
+		color: var(--card-author-name);
+
+		&--link {
+			color: var(--color-blue);
+			text-decoration: none;
+
+			&:hover {
+				color: var(--color-blue-light);
+			}
+		}
 	}
 }
