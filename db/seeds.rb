@@ -3,6 +3,8 @@ require 'faker'
 puts 'Destroying records and data'
 Category.destroy_all
 User.destroy_all
+Comments.destroy_all
+Landscape.destroy_all
 
 puts 'Creating categories'
 categories = ["Naturaleza", "Ciudad", "Urbano", "Viajes", "Playas"]
