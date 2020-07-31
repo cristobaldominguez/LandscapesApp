@@ -13,7 +13,7 @@
       </div>
       <div class="card__content">
         <a class="card__profile-container" href="<%= user_path(landscape.user) %>">
-          <%= image_tag landscape.user.profile, class: 'card__profile' %>
+          <%= image_tag landscape.user.profile.variant(resize: "240x240").processed, class: 'card__profile' %>
         </a>
         <a class="card__like" href="#">
           <i class="fas fa-heart"></i>
@@ -53,7 +53,7 @@
               <% landscape.comments.each do |comment| %>
               <li class="comment__item">
                 <picture class="comment__item-profile">
-                  <%= image_tag comment.user.profile, class: 'comment__profile' %>
+                  <%= image_tag comment.user.profile.variant(resize: "100x100").processed, class: 'comment__profile' %>
                 </picture>
                 <div class="comment__item-content">
                   <p class="comment__text">
@@ -72,7 +72,7 @@
 
             <form class="add_comment" action="#">
               <picture class="add_comment__profile-container">
-                <%= image_tag current_user.profile, class: 'add_comment__profile' %>
+                <%= image_tag current_user.profile.variant(resize: "100x100").processed, class: 'add_comment__profile' %>
               </picture>
               <div class="add_comment__content">
                 <textarea name="comment[]" class="add_comment__text"></textarea>

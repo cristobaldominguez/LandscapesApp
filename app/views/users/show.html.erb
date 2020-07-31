@@ -1,7 +1,7 @@
 <%= render 'layouts/shared/header', image: @user.cover.attached? ? url_for(@user.cover) : '' do %>
 	<div class="profile">
 		<div class="profile__container">
-			<%= image_tag @user.profile.attached? ? @user.profile : 'profiles/avatar.png', class: 'profile__image' %>
+			<%= image_tag @user.profile.attached? ? @user.profile.variant(resize: "400x400").processed : 'profiles/avatar.png', class: 'profile__image' %>
 		</div>
 
 		<h3 class="profile__name"><%= @user.full_name %></h3>
@@ -34,7 +34,7 @@
 			<% @landscapes.each do |landscape| %>
 				<li class="landscape__item">
 					<a href="#" class="landscape__link">
-						<%= image_tag landscape.image.variant(combine_options: { gravity: 'Center', crop: '400x400+0+0' }), class: 'landscape__image', data: { lightbox: 'landscapes'} %>
+						<%= image_tag landscape.image.variant(combine_options: { gravity: 'Center', crop: '334x334+0+0' }), class: 'landscape__image', data: { lightbox: 'landscapes'} %>
 					</a>
 				</li>
 			<% end %>
