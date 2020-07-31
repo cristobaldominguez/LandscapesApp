@@ -6,7 +6,6 @@
   <div class="card_form__card">
     <div class="card_form__picture">
       <div class="card_form__picture-span" id="dropzone">
-        <%# <p>Arrastra tu Landscape o haz clic!</p> %>
         <div class="fallback">
           <input id="#foo" name="landscape[image]" type="file" />
         </div>
@@ -14,24 +13,29 @@
     </div>
 
     <div class="card_form__inputs">
-      <label for="landscape[title]" class="label">Título</label>
-      <div class="control">
-        <input
-          id="landscape-title"
-          type="text"
-          name="landscape[title]"
-          class="card_form__input-title"
-          placeholder="Escribe aquí el título"
-        />
+      <div class="field">
+        
+      <label for="landscape[title]" class="card_form__label-title label">Título</label>
+        <div class="control">
+          <input
+            id="landscape-title"
+            type="text"
+            name="landscape[title]"
+            class="card_form__input-title input"
+            placeholder="Escribe aquí el título"
+          />
+        </div>
       </div>
-      <label for="landscape[description]" class="label">Descripción</label>
-      <div class="control">
-        <textarea
-          id="landscape-description"
-          name="landscape[description]"
-          class="card_form__input-description"
-          placeholder="Escribe aquí la descripción"
-        ></textarea>
+      <div class="field">
+        <label for="landscape[description]" class="card_form__label-description label">Descripción</label>
+        <div class="control">
+          <textarea
+            id="landscape-description"
+            name="landscape[description]"
+            class="card_form__input-description textarea"
+            placeholder="Escribe aquí la descripción"
+          ></textarea>
+        </div>
       </div>
     </div>
   </div>

@@ -68,10 +68,10 @@
     }
 
     &__input {
-        background: transparent;
+        background: var(--form-input-bg);
         border: none;
-        border-bottom: 1px solid white;
         border-radius: 0;
+        color: var(--card-color);
         font-size: .9rem;
         padding: .5em;
         width: 100%;
