@@ -17,8 +17,9 @@ document.addEventListener("turbolinks:load", function () {
 
   $('.cards').on('click', '.card__highlight', function(event) {
     const card__data = $(this).next().find('.card__data');
+    const card__description = $(this).next().find('.card__description');
     const card_hidden = $(this).next().find('.card__hidden');
-    const height = card__data.outerHeight(true) + 'px';
+    const height = card__data.outerHeight(true) + card__description.outerHeight(true) + 20 + 'px';
     card_hidden.get(0).style.setProperty("--current-height", height);
 
     $(this).parent().toggleClass('card--open');
