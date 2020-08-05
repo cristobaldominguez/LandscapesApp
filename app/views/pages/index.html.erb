@@ -1,4 +1,4 @@
-<%= render 'layouts/shared/header', image: current_user.present? && current_user ? url_for(current_user.cover) : '' do %>
+<%= render 'layouts/shared/header', image: user_signed_in? ? url_for(current_user.cover) : '' do %>
 <% end %>
 
 <div class="container">
@@ -69,7 +69,8 @@
               </li>
               <% end %>
             </ul>
-
+            
+            <% if user_signed_in? %>
             <form class="add_comment" action="#">
               <picture class="add_comment__profile-container">
                 <%= image_tag current_user.profile.variant(resize: "100x100").processed, class: 'add_comment__profile' %>
@@ -79,6 +80,7 @@
                 <button type="submit" class="add_comment__submit">Publicar</button>
               </div>
             </form>
+            <% end %>
           </div>
         </div>
       </div>
