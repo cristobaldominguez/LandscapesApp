@@ -1,0 +1,59 @@
+<%= form_with(model: user, local: true) do |form| %>
+<%= render 'layouts/shared/header', image: url_for(@user.cover) do %>
+  <div class="profile">
+    <div class="profile__container <%= @user.profile.attached? ? '' : 'profile__container--empty' %>">
+      <%= image_tag @user.profile, class: 'profile__image' %>
+    </div>
+  </div>
+<% end %>
+
+<div class="container">
+    
+  <div class="field">
+    <%= form.label :name, class: 'card_form__label-title label' %>
+    <div class="control">
+      <%= form.text_field :name, class: 'card_form__input-title input', placeholder: 'Name' %>
+    </div>
+  </div>
+  
+  <div class="field">
+    <label class="card_form__label-title label">Apellido</label>
+    <div class="control">
+      <%= form.text_field :lastname, class: 'card_form__input-title input', placeholder: 'Lastname' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="card_form__label-title label">Sobrenombre</label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :nickname, class: 'card_form__input-title input is-success', placeholder: 'Nickname' %>
+      <span class="icon is-small is-left">
+        <i class="fas fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-check"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="card_form__label-title label">Email</label>
+    <div class="control has-icons-left has-icons-right">
+      <%= form.text_field :email, class: 'card_form__input-title input is-danger', placeholder: 'hello@' %>
+      <span class="icon is-small is-left">
+        <i class="fas fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fas fa-exclamation-triangle"></i>
+      </span>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control text-center">
+      <%= form.submit class: 'button is-link' %>
+    </div>
+  </div>
+
+</div>
+<% end %>

@@ -17,7 +17,7 @@
         <%= link_to 'Landscapes', root_path, class: 'navbar-item' %>
         <%= link_to 'Nuevo Landscape', new_landscape_path, class: 'navbar-item' %>
         <%= link_to 'Perfil', profile_users_path, class: 'navbar-item' %>
-        <%= link_to 'User Form', pages_user_form_path, class: 'navbar-item' %>
+        <%= link_to 'Editar perfil', edit_user_path(current_user), class: 'navbar-item' %>
       </div>
 
       <div class="navbar-end">
