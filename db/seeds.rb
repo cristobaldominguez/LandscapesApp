@@ -1,10 +1,10 @@
 require 'faker'
 
 puts 'Destroying records and data'
+Comment.destroy_all
+Landscape.destroy_all
 Category.destroy_all
 User.destroy_all
-Comments.destroy_all
-Landscape.destroy_all
 
 puts 'Creating categories'
 categories = ["Naturaleza", "Ciudad", "Urbano", "Viajes", "Playas"]
@@ -40,7 +40,7 @@ users.each do |user|
   current_user.profile.attach(io: File.open("app/assets/images/profiles/#{user[:profile]}"), filename: user[:profile])
   current_user.cover.attach(io: File.open("app/assets/images/covers/#{user[:cover]}"), filename: user[:cover])
 
-  user[:landscapes].times do |index|
+  user[:landscapes].times do
     id = images.pop
     date = Date.today - days[id].days
 
@@ -68,7 +68,7 @@ landscape_ids.each do |landscape|
 
   rand_comment = rand_comments.pop
 
-  rand_comment.times do |_|
+  rand_comment.times do
     current_comment = Comment.create!(
        user_id: user_ids.sample,
        landscape_id: landscape,
