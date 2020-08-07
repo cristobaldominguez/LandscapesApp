@@ -1,0 +1,95 @@
+document.addEventListener("turbolinks:load", function () {
+  const dropzone_enabled = document.querySelector('#dropzone')
+
+  if (dropzone_enabled) {
+    const thumbnailDimensions = $('.card_form__picture-span').width()
+
+    const dropzoneNewLandscape = new Dropzone(dropzone_enabled, {
+      method: 'post',
+      url: '/landscapes',
+      acceptedFiles: 'image/*',
+      autoProcessQueue: false,
+      paramName: 'landscape[image]',
+      previewTemplate: document.querySelector('#tpl').innerHTML,
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      thumbnailWidth: thumbnailDimensions,
+      thumbnailHeight: thumbnailDimensions
+    });
+
+    dropzoneNewLandscape.on("sending", function (file, xhr, formData) {
+      const title = $('#landscape-title').val();
+      const description = $('#landscape-description').val();
+      formData.append('landscape[title]', title);
+      formData.append('landscape[description]', description);
+    });
+
+    // After the landscape is created, then we redirect to my profile view
+    dropzoneNewLandscape.on("success", function () {
+      alert('Landscape creado correctamente!!');
+      window.location = "/users/profile";
+    });
+
+    // After the landscape is created, then we redirect to my profile view
+    dropzoneNewLandscape.on("canceled", function () {
+      alert('Oops! Ocurrió un error, intente nuevamente');
+    });
+
+    $('#btn-form-landscape-new-submit').click(() => {
+      dropzoneNewLandscape.processQueue();
+    });
+  }
+
+  const image_profile_enabled = document.querySelector('#dropzone__image-profile')
+  if (image_profile_enabled) {
+    const thumbnailDimensions = $('.profile__container').width()
+
+    const dropzoneImageProfile = new Dropzone(image_profile_enabled, {
+      method: document.querySelector('#dropzone_image_profile').method,
+      url: document.querySelector('#dropzone_image_profile').action,
+      acceptedFiles: 'image/*',
+      autoProcessQueue: false,
+      paramName: 'user[profile]',
+      previewTemplate: document.querySelector('#tpl').innerHTML,
+      headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      },
+      thumbnailWidth: thumbnailDimensions,
+      thumbnailHeight: thumbnailDimensions
+    });
+
+    dropzoneImageProfile.on("sending", function (file, xhr, formData) {
+      const name = $('[name="user[name]"]').val();
+      const email = $('[name="user[email]"]').val();
+      const nickname = $('[name="user[nickname]"]').val();
+      const lastname = $('[name="user[lastname]"]').val();
+
+      formData.append('user[name]', name);
+      formData.append('user[email]', email);
+      formData.append('user[lastname]', lastname);
+      formData.append('user[nickname]', nickname);
+    });
+
+    // After the landscape is created, then we redirect to my profile view
+    dropzoneImageProfile.on("success", function () {
+      // window.location = "/users/profile";
+    });
+
+    // After the landscape is created, then we redirect to my profile view
+    dropzoneImageProfile.on("canceled", function () {
+      alert('Oops! Ocurrió un error, intente nuevamente');
+    });
+
+    $('#btn-form-landscape-new-submit').click((e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      if (dropzoneImageProfile.files.length) {
+        dropzoneImageProfile.processQueue(); // upload files and submit the form
+      } else {
+        $('#dropzone_image_profile').submit(); // submit the form
+      }
+    });
+  }
+  
+});

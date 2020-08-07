@@ -9,6 +9,7 @@
 		text-align: center;
 		margin: 0 auto;
 		overflow: hidden;
+		padding: 0;
 		position: relative;
 		width: 200px;
 
@@ -70,5 +71,9 @@
 				color: var(--color-blue-light);
 			}
 		}
+	}
+
+	.dz-details {
+		border-radius: 5px;
 	}
 }

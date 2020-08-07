@@ -1,8 +1,10 @@
-<%= form_with(model: user, local: true) do |form| %>
+<%= form_with(model: user, local: true, html: {id: 'dropzone_image_profile'}) do |form| %>
 <%= render 'layouts/shared/header', image: url_for(@user.cover) do %>
   <div class="profile">
-    <div class="profile__container <%= @user.profile.attached? ? '' : 'profile__container--empty' %>">
-      <%= image_tag @user.profile, class: 'profile__image' %>
+    <div class="profile__container <%= @user.profile.attached? ? '' : '' %>" id="dropzone__image-profile" style="background: url(<%= url_for @user.profile %>) center / auto 100% transparent;">
+      <div class="fallback">
+        <input id="#foo" name="user[profile]" type="file" />
+        </div>
     </div>
   </div>
 <% end %>
@@ -10,23 +12,23 @@
 <div class="container">
     
   <div class="field">
-    <%= form.label :name, class: 'card_form__label-title label' %>
+    <label class="card_form__label-title label" for="user_name">Name</label>
     <div class="control">
-      <%= form.text_field :name, class: 'card_form__input-title input', placeholder: 'Name' %>
+      <input class="card_form__input-title input" placeholder="Name" type="text" value="<%= @user.name %>" name="user[name]" id="user_name">
     </div>
   </div>
   
   <div class="field">
     <label class="card_form__label-title label">Apellido</label>
     <div class="control">
-      <%= form.text_field :lastname, class: 'card_form__input-title input', placeholder: 'Lastname' %>
+      <input class="card_form__input-title input" placeholder="Lastname" type="text" value="<%= @user.lastname %>" name="user[lastname]" id="user_lastname">
     </div>
   </div>
 
   <div class="field">
     <label class="card_form__label-title label">Sobrenombre</label>
     <div class="control has-icons-left has-icons-right">
-      <%= form.text_field :nickname, class: 'card_form__input-title input is-success', placeholder: 'Nickname' %>
+      <input class="card_form__input-title input is-success" placeholder="Nickname" type="text" value="<%= @user.nickname %>" name="user[nickname]" id="user_nickname">
       <span class="icon is-small is-left">
         <i class="fas fa-user"></i>
       </span>
@@ -39,7 +41,7 @@
   <div class="field">
     <label class="card_form__label-title label">Email</label>
     <div class="control has-icons-left has-icons-right">
-      <%= form.text_field :email, class: 'card_form__input-title input is-danger', placeholder: 'hello@' %>
+      <input class="card_form__input-title input is-danger" placeholder="hello@" type="text" value="<%= @user.email %>" name="user[email]" id="user_email">
       <span class="icon is-small is-left">
         <i class="fas fa-envelope"></i>
       </span>
@@ -49,11 +51,22 @@
     </div>
   </div>
 
-  <div class="field">
-    <div class="control text-center">
-      <%= form.submit class: 'button is-link' %>
-    </div>
+  <div class="control text-center">
+    <input id="btn-form-landscape-new-submit" type="button" value="Actualizar Usuario" class="button is-link" />
   </div>
 
 </div>
 <% end %>
+
+<div id="tpl">
+  <div class="dz-preview dz-file-preview well" id="dz-preview-template">
+    <div class="dz-details">
+      <div class="dz-image"><img data-dz-thumbnail alt src></div>
+    </div>
+      <div class="dz-filename"><span data-dz-name></span></div>
+    <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+    <div class="dz-success-mark"><span></span></div>
+    <div class="dz-error-mark"><span></span></div>
+    <div class="dz-error-message"><span data-dz-errormessage></span></div>
+  </div>
+</div>
