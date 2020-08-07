@@ -1,10 +1,18 @@
 require 'faker'
 
 puts 'Destroying records and data'
-Comment.destroy_all
-Landscape.destroy_all
+Comment.with_deleted.each { |u| u.really_destroy! } # acts as paranoid
+Landscape.with_deleted.each { |u| u.really_destroy! } # acts as paranoid
 Category.destroy_all
 User.destroy_all
+
+
+# Reset postgres auto increments
+puts "Reseting postgres auto increment ids"
+Comment.connection.execute('ALTER SEQUENCE comments_id_seq RESTART WITH 1')
+Landscape.connection.execute('ALTER SEQUENCE landscapes_id_seq RESTART WITH 1')
+Category.connection.execute('ALTER SEQUENCE categories_id_seq RESTART WITH 1')
+User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 
 puts 'Creating categories'
 categories = ["Naturaleza", "Ciudad", "Urbano", "Viajes", "Playas"]
