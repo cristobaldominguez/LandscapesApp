@@ -1,10 +1,18 @@
 require 'faker'
 
 puts 'Destroying records and data'
+Comment.with_deleted.each { |u| u.really_destroy! } # acts as paranoid
+Landscape.with_deleted.each { |u| u.really_destroy! } # acts as paranoid
 Category.destroy_all
 User.destroy_all
-Comments.destroy_all
-Landscape.destroy_all
+
+
+# Reset postgres auto increments
+puts "Reseting postgres auto increment ids"
+Comment.connection.execute('ALTER SEQUENCE comments_id_seq RESTART WITH 1')
+Landscape.connection.execute('ALTER SEQUENCE landscapes_id_seq RESTART WITH 1')
+Category.connection.execute('ALTER SEQUENCE categories_id_seq RESTART WITH 1')
+User.connection.execute('ALTER SEQUENCE users_id_seq RESTART WITH 1')
 
 puts 'Creating categories'
 categories = ["Naturaleza", "Ciudad", "Urbano", "Viajes", "Playas"]
@@ -40,7 +48,7 @@ users.each do |user|
   current_user.profile.attach(io: File.open("app/assets/images/profiles/#{user[:profile]}"), filename: user[:profile])
   current_user.cover.attach(io: File.open("app/assets/images/covers/#{user[:cover]}"), filename: user[:cover])
 
-  user[:landscapes].times do |index|
+  user[:landscapes].times do
     id = images.pop
     date = Date.today - days[id].days
 
@@ -68,7 +76,7 @@ landscape_ids.each do |landscape|
 
   rand_comment = rand_comments.pop
 
-  rand_comment.times do |_|
+  rand_comment.times do
     current_comment = Comment.create!(
        user_id: user_ids.sample,
        landscape_id: landscape,

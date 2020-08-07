@@ -1,4 +1,7 @@
 class Landscape < ApplicationRecord
+  acts_as_paranoid
+  
+  # Relations
   belongs_to :user
   has_many :comments
   has_many :likes

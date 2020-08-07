@@ -15,9 +15,11 @@
     <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-start">
         <%= link_to 'Landscapes', root_path, class: 'navbar-item' %>
-        <%= link_to 'Nuevo Landscape', new_landscape_path, class: 'navbar-item' %>
-        <%= link_to 'Perfil', profile_users_path, class: 'navbar-item' %>
-        <%= link_to 'Editar perfil', edit_user_path(current_user), class: 'navbar-item' %>
+        <% if user_signed_in? %>
+          <%= link_to 'Nuevo Landscape', new_landscape_path, class: 'navbar-item' %>
+          <%= link_to 'Perfil', profile_users_path, class: 'navbar-item' %>
+          <%= link_to 'Editar perfil', edit_user_path(current_user), class: 'navbar-item' %>
+        <% end %>
       </div>
 
       <div class="navbar-end">
