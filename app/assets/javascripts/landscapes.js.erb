@@ -44,9 +44,10 @@ document.addEventListener("turbolinks:load", function () {
   const image_profile_enabled = document.querySelector('#dropzone__image-profile')
   if (image_profile_enabled) {
     const thumbnailDimensions = $('.profile__container').width()
+    const user = {}
 
     const dropzoneImageProfile = new Dropzone(image_profile_enabled, {
-      method: document.querySelector('#dropzone_image_profile').method,
+      method: 'PATCH',
       url: document.querySelector('#dropzone_image_profile').action,
       acceptedFiles: 'image/*',
       autoProcessQueue: false,
@@ -60,20 +61,15 @@ document.addEventListener("turbolinks:load", function () {
     });
 
     dropzoneImageProfile.on("sending", function (file, xhr, formData) {
-      const name = $('[name="user[name]"]').val();
-      const email = $('[name="user[email]"]').val();
-      const nickname = $('[name="user[nickname]"]').val();
-      const lastname = $('[name="user[lastname]"]').val();
-
-      formData.append('user[name]', name);
-      formData.append('user[email]', email);
-      formData.append('user[lastname]', lastname);
-      formData.append('user[nickname]', nickname);
+      formData.append('user[name]', user.name);
+      formData.append('user[email]', user.email);
+      formData.append('user[lastname]', user.lastname);
+      formData.append('user[nickname]', user.nickname);
     });
 
     // After the landscape is created, then we redirect to my profile view
     dropzoneImageProfile.on("success", function () {
-      // window.location = "/users/profile";
+      window.location = "/users/profile";
     });
 
     // After the landscape is created, then we redirect to my profile view
@@ -84,12 +80,29 @@ document.addEventListener("turbolinks:load", function () {
     $('#btn-form-landscape-new-submit').click((e) => {
       e.preventDefault();
       e.stopPropagation();
+
+      user.name = $('[name="user[name]"]').val();
+      user.email = $('[name="user[email]"]').val();
+      user.nickname = $('[name="user[nickname]"]').val();
+      user.lastname = $('[name="user[lastname]"]').val();
+
       if (dropzoneImageProfile.files.length) {
         dropzoneImageProfile.processQueue(); // upload files and submit the form
       } else {
-        $('#dropzone_image_profile').submit(); // submit the form
+        $.ajax({
+          url: document.querySelector('#dropzone_image_profile').action,
+          type: 'PATCH',
+          dataType: 'json',
+          data: { user },
+          beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))}
+        })
+        .done(function(success) {
+          window.location = "/users/profile";
+        })
+        .fail(function(error) {
+          console.error(error);
+        });
       }
     });
   }
-  
 });

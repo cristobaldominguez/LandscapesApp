@@ -1,4 +1,4 @@
-<%= form_with(model: user, local: true, html: {id: 'dropzone_image_profile'}) do |form| %>
+<form action="<%= user_path(current_user.id) %>" id="dropzone_image_profile">
 <%= render 'layouts/shared/header', image: url_for(@user.cover) do %>
   <div class="profile">
     <div class="profile__container <%= @user.profile.attached? ? '' : '' %>" id="dropzone__image-profile" style="background: url(<%= url_for @user.profile %>) center / auto 100% transparent;">
@@ -56,7 +56,7 @@
   </div>
 
 </div>
-<% end %>
+</form>
 
 <div id="tpl">
   <div class="dz-preview dz-file-preview well" id="dz-preview-template">
