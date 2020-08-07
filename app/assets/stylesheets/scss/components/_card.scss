@@ -132,6 +132,7 @@
         color: #ccc;
         display: block;
         padding: 28px 0 0 20px;
+        position: absolute;
         text-align: center;
         transition: all .35s ease-out;
         width: 120px;
@@ -157,6 +158,7 @@
 
     &__description {
         position: relative;
+        margin-top: 93px;
 
         &-text {
             left: 140px;
