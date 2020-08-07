@@ -131,6 +131,7 @@ GEM
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    railroady (1.5.3)
     rails (5.2.4.3)
       actioncable (= 5.2.4.3)
       actionmailer (= 5.2.4.3)
@@ -232,6 +233,7 @@ DEPENDENCIES
   paranoia (~> 2.2)
   pg (>= 0.18, < 2.0)
   puma (~> 3.11)
+  railroady
   rails (~> 5.2.4, >= 5.2.4.3)
   sass-rails (~> 5.0)
   selenium-webdriver

@@ -8,11 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <!-- This only works without turbolinks -->
+    <%#= stylesheet_link_tag params[:controller] if ::Rails.application.assets.find_asset("#{params[:controller]}.scss") %>
+    
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render "layouts/shared/navbar" %>
     <%= yield %>
+    <!-- Controller's JS -->
+    <%= javascript_include_tag(params[:controller]) unless params[:controller] == 'users/sessions' %>
+    <!-- END OF Controller's JS -->
   </body>
 </html>

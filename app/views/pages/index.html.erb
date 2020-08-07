@@ -15,9 +15,11 @@
         <a class="card__profile-container" href="<%= user_path(landscape.user) %>">
           <%= image_tag landscape.user.profile.variant(resize: "240x240").processed, class: 'card__profile' %>
         </a>
-        <a class="card__like" href="#">
-          <i class="fas fa-heart"></i>
-        </a>
+        <% if user_signed_in? %>
+          <a class="card__like" href="#" data-landscape-id="<%= landscape.id %>">
+            <i class="fas fa-heart"></i>
+          </a>
+        <% end %>
         <div class="card__title">
           <h2 class="card__title-text"><%= landscape.title %></h2>
         </div>
@@ -62,8 +64,10 @@
                   </p>
                   <p class="comment__info">
                     <span class="comment__time"><%= time_ago_in_words(comment.created_at) %></span>
-                    <a class="comment__like" href="#"><i class="fas fa-heart"></i></a>
-                    <a class="comment__reply" href="#">reply</a>
+                    <% if user_signed_in? %>
+                      <a class="comment__like" href="#"><i class="fas fa-heart"></i></a>
+                      <a class="comment__reply" href="#">reply</a>
+                    <% end %>
                   </p>
                 </div>
               </li>

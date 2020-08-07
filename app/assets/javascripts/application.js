@@ -15,4 +15,7 @@
 //= require turbolinks
 //= require jquery
 //= require dropzone
+
+// stub avoids to load an specific file
+//= stub pages
 //= require_tree .

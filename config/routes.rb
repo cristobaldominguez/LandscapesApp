@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :landscapes
+  resources :likes
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
