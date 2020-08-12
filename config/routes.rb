@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     collection do 
       get 'profile'
+      get 'my_friends'
     end
   end
 
