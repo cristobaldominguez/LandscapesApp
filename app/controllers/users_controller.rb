@@ -41,6 +41,11 @@ class UsersController < ApplicationController
     @landscapes = current_user.landscapes
   end
 
+  # GET /users/my_friends
+  def my_friends
+    @friends = @user.my_friends
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
